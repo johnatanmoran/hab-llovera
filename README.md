@@ -24,10 +24,10 @@ horas hay pronóstico de lluvia.
 no.
 
 ## Integrantes del Grupo A.K.A. Killer Panda
-- cris
-- jetro
-- [johnatanmoran](https://johnatanmoran.com)
-- lovo
+- @CrisFilgueira
+- @JetroQuero
+- @JosGalSol
+- @johnatanmoran
 
 ![killer panda](media/killerpanda/killerpanda-centro-horizontal.png)
 
