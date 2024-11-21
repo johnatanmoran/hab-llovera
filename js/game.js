@@ -86,8 +86,10 @@ function createPlanta() {
 	const shouldCreatePlanta = Math.random() > 0.1; // 90% de probabilidad
 	if (shouldCreatePlanta) {
 		const x = canvas.width;
-		const alpha = Math.random() * Math.PI * 2;
-		plantas.push({ x, alpha });
+		const alpha = Math.random();
+		const size = Math.floor(Math.random() * 41) + 10;
+		plantas.push({ x, alpha, size });
+		console.log(`Planta creada ${size} x ${size} OPC:${alpha} `);
 	}
 }
 
@@ -114,13 +116,15 @@ function drawObstacles() {
 // Dibujar plantas
 function drawPlantas() {
 	plantas.forEach((planta) => {
+		ctx.globalAlpha = planta.alpha;
 		ctx.drawImage(
 			plantaImg,
 			planta.x,
-			canvas.height - planta.height - 10,
-			40,
-			40
+			canvas.height - 80,
+			planta.size,
+			planta.size
 		);
+		ctx.globalAlpha = 1;
 	});
 }
 
@@ -167,7 +171,7 @@ function updateObstacles() {
 // Actualizar plantas
 function updatePlantas() {
 	plantas.forEach((planta, index) => {
-		planta.x -= plantasSpeed;
+		planta.x -= obstacleSpeed;
 
 		// planta pasa
 		if (planta.x + 40 < 0) {
@@ -221,18 +225,18 @@ function updateGame() {
 			pandaY = canvas.height - spriteHeight - 10;
 			isJumping = false;
 			console.log("Salto finalizado");
-		} else if (pandaY === canvas.height - spriteHeight) {
-			console.log(`Techo a ${pandaY}`);
-		} else {
-			console.log(`Va por ${pandaY}`);
-		}
+		} //else if (pandaY === canvas.height - spriteHeight) {
+		//	console.log(`Techo a ${pandaY}`);
+		//} else {
+		//	console.log(`Va por ${pandaY}`);
+		//}
 	}
 
-	drawPanda();
-	updateObstacles();
-	drawObstacles();
 	updatePlantas();
 	drawPlantas();
+	updateObstacles();
+	drawObstacles();
+	drawPanda();
 
 	// Mostrar la puntuación
 	ctx.fillStyle = "black";
@@ -342,4 +346,4 @@ setInterval(() => {
 	if (!gamePaused && !gameOver) {
 		createPlanta();
 	}
-}, plantSpacing);
+}, plantasSpacing);
