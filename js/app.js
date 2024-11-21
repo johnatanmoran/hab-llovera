@@ -21,6 +21,9 @@ const date = getUserDate();
 const locationData = await userLocation();
 console.log(locationData);
 
+// Importar funcion de timeline para cambio de fondos
+import { fondoClimas } from "./timeline.js";
+
 // Importar la función de meteo.js (o como se llame el fichero de Jetro)
 // import { getWeatherData } from "./1meteo.js"; / esta en node.js
 
@@ -68,6 +71,8 @@ async function main() {
 	} catch (error) {
 		console.error("Error al obtener o mostrar los datos del clima:", error);
 	}
+
+	//fondoClimas(clima);
 }
 
 // Ejecutar la función principal

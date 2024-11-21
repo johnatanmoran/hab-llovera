@@ -3,16 +3,16 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
 // Variables del juego
-const spriteWidth = 90;
+const spriteWidth = 60;
 const spriteHeight = 60;
 let pandaIndex = 0;
 let points = 0;
 let maxScore = 0;
 let isJumping = false;
-let pandaX = 50;
+let pandaX = 10;
 let pandaY = canvas.height - spriteHeight - 10;
-let velocityY = 0;
-const jumpPower = 10;
+let velocityY = 1;
+const jumpPower = 15;
 const gravity = 0.5;
 let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
@@ -24,11 +24,16 @@ const obstacleSpacing = 1800; // Mayor separación
 
 // Cargar los sprites del panda
 const pandaSprites = [];
-for (let i = 1; i <= 9; i++) {
+for (let i = 1; i <= 11; i++) {
 	const img = new Image();
 	img.src = `media/killerpanda/sprites/panda_${i}.png`;
 	pandaSprites.push(img);
 }
+
+// Cargo los sprites del bambu
+const obstacleImg = new Image();
+obstacleImg.src = `media/killerpanda/sprites/bambu_01.png`;
+
 console.log(pandaSprites);
 
 // Variables para controlar el estado del juego
@@ -68,13 +73,20 @@ function createObstacle() {
 // Dibujar obstáculos
 function drawObstacles() {
 	obstacles.forEach((obstacle) => {
-		ctx.fillStyle = "darkgreen"; // Color fijo
-		ctx.fillRect(
+		ctx.drawImage(
+			obstacleImg,
 			obstacle.x,
 			canvas.height - obstacle.height - 10,
 			obstacleWidth,
 			obstacle.height
 		);
+		//ctx.fillStyle = "darkgreen"; // Color fijo
+		//ctx.fillRect(
+		//	obstacle.x,
+		//	canvas.height - obstacle.height - 10,
+		//	obstacleWidth,
+		//	obstacle.height
+		//);
 	});
 }
 
@@ -85,7 +97,7 @@ function updateObstacles() {
 
 		// Colisión
 		if (
-			pandaX + spriteWidth / 2 > obstacle.x &&
+			pandaX + spriteWidth > obstacle.x &&
 			pandaX < obstacle.x + obstacleWidth &&
 			pandaY + spriteHeight > canvas.height - obstacle.height - 10
 		) {
@@ -108,10 +120,10 @@ function updateObstacles() {
 				obstacleSpeed += 0.5; // Incremento gradual de velocidad
 				pandaIndex++; // Cambia al siguiente sprite
 				console.log(`Nivel: ${pandaIndex}`);
-				if (pandaIndex > 8) {
+				if (pandaIndex > 10) {
 					pandaIndex = 0;
 					obstacleSpeed++;
-					pandaX++;
+					pandaX += 10;
 				}
 			}
 		}
@@ -131,17 +143,21 @@ function displayMessage(message, subMessage = "") {
 }
 
 // Manejo del salto
-function jump() {
+function jumpOld() {
 	if (!gamePaused && !gameOver) {
 		if (!isJumping) {
 			isJumping = true;
 			velocityY = -jumpPower;
-		} else if (velocityY < 0) {
-			velocityY -= jumpPower / 2; // Salto acumulativo
 		} else {
-			velocityY -= jumpPower / 4; // Salto lento
+			velocityY -= jumpPower / 2; // Salto lento
 		}
-		console.log(`Salto de ${velocityY}`);
+	}
+}
+
+function jump() {
+	if (!isJumping) {
+		isJumping = true;
+		velocityY = -jumpPower;
 	}
 }
 
@@ -155,9 +171,14 @@ function updateGame() {
 	if (isJumping) {
 		pandaY += velocityY;
 		velocityY += gravity;
-		if (pandaY >= canvas.height - spriteHeight - 10) {
+		if (pandaY > canvas.height - spriteHeight - 10) {
 			pandaY = canvas.height - spriteHeight - 10;
 			isJumping = false;
+			console.log("Salto finalizado");
+		} else if (pandaY === canvas.height - spriteHeight) {
+			console.log(`Techo a ${pandaY}`);
+		} else {
+			console.log(`Va por ${pandaY}`);
 		}
 	}
 
@@ -167,15 +188,22 @@ function updateGame() {
 
 	// Mostrar la puntuación
 	ctx.fillStyle = "black";
-	ctx.font = "15px Arial";
-	ctx.textAlign = "flex-start";
-	ctx.fillText(`Puntos: ${points}`, canvas.width / 2, 30);
-	console.log(`Puntos: ${points}`);
+	ctx.font = "10px Arial";
+	ctx.textAlign = "left";
+	ctx.fillText(`Puntos: ${points}`, 30, 30);
+	//console.log(`Puntos: ${points}`);
+
+	// Mostrar la puntuación maxima
+	ctx.fillStyle = "black";
+	ctx.font = "10px Arial";
+	ctx.textAlign = "right";
+	ctx.fillText(`Puntuación máxima: ${maxScore}`, canvas.width - 40, 30);
+	//console.log(`Puntuación máxima: ${maxScore}`);
 }
 
 // Manejo del final del juego
 function handleGameOver() {
-	highScores.push(points);
+	highScores.push(maxScore);
 	highScores.sort((a, b) => b - a);
 	highScores = highScores.slice(0, 5);
 	localStorage.setItem("highScores", JSON.stringify(highScores));
@@ -188,9 +216,11 @@ function handleGameOver() {
 	setTimeout(() => {
 		displayMessage(
 			"Puntuaciones más altas:",
-			highScores.map((score, i) => `${i + 1}. ${score} puntos`).join("\n")
+			highScores
+				.map((score, i) => `${i + 1}º. ${score} puntos\n`)
+				.join("\n")
 		);
-	}, 2000);
+	}, 5000);
 }
 
 // Iniciar el juego
@@ -198,7 +228,7 @@ function startGame() {
 	points = 0; // Puntuación inicial
 	pandaIndex = 0;
 	obstacles.length = 0;
-	obstacleSpeed = 3;
+	obstacleSpeed = 4;
 	gamePaused = false;
 	gameOver = false;
 	gameLoop();
@@ -236,6 +266,9 @@ document.addEventListener("keydown", (e) => {
 	}
 	if (e.code === "Enter" && gamePaused) {
 		startGame();
+	} else if (e.code === "space" && !gamePaused) {
+		gamePaused = true;
+		console.log("Pausado");
 	}
 });
 

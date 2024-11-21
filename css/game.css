@@ -16,9 +16,18 @@ body {
 }
 
 canvas {
-	background-color: #a7ffeb;
-	border: 2px solid #00695c;
+	/*width: 100%;*/
+	border-bottom: 2px solid #1f5826;
 	display: block;
+	background: rgb(151, 130, 121);
+	background: linear-gradient(
+		0deg,
+		rgba(151, 130, 121, 0.5) 0%,
+		rgba(196, 162, 51, 0.5) 10%,
+		rgba(111, 162, 113, 1) 15%,
+		rgba(95, 200, 10, 0.45) 45%,
+		rgba(0, 212, 255, 0) 100%
+	);
 }
 
 #score {
