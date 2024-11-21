@@ -7,7 +7,6 @@ import { getUserDate } from "./geolocation-beta.js";
 
 // Obtener la fecha / hora del usuario
 const date = getUserDate();
-console.log(date);
 // {
 // 	day: 21,
 // 	hours: 2,
@@ -51,6 +50,7 @@ async function main() {
 	try {
 		// Obtener datos del clima
 		// const weatherData = await getWeatherData();
+
 		// Inyectar los datos en el HTML
 		currentLocation.textContent = locationData.city;
 		for (let i = 0; i < 4; i++) {
@@ -65,7 +65,6 @@ async function main() {
 				String(date.minutes).padStart(2, "0")
 			}`;
 		}
-		// updateWeatherUI(weatherData);
 	} catch (error) {
 		console.error("Error al obtener o mostrar los datos del clima:", error);
 	}

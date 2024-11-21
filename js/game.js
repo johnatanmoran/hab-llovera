@@ -18,9 +18,9 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 // Configuración de obstáculos
 const obstacles = [];
-const obstacleWidth = 10;
-let obstacleSpeed = 6;
-const obstacleSpacing = 2400; // Mayor separación
+const obstacleWidth = 15;
+let obstacleSpeed = 4;
+const obstacleSpacing = 1800; // Mayor separación
 
 // Cargar los sprites del panda
 const pandaSprites = [];
@@ -37,8 +37,8 @@ let gameOver = false;
 
 // Dibujar el panda
 function drawPanda() {
-	ctx.fillStyle = "lightblue"; // Fondo visible para testeo
-	ctx.fillRect(pandaX, pandaY, spriteWidth, spriteHeight);
+	//ctx.fillStyle = "lightblue"; // Fondo visible para testeo
+	//ctx.fillRect(pandaX, pandaY, spriteWidth, spriteHeight);
 	ctx.drawImage(
 		pandaSprites[pandaIndex],
 		pandaX,
@@ -53,7 +53,7 @@ function createObstacle() {
 	if (gamePaused || gameOver) return;
 
 	// Probabilidad de generar un obstáculo
-	const shouldCreate = Math.random() > 0.4; // 60% de probabilidad
+	const shouldCreate = Math.random() > 0.2; // 80% de probabilidad
 	if (shouldCreate) {
 		const x = canvas.width;
 		const minHeight = 20; // Altura mínima del obstáculo
@@ -68,7 +68,7 @@ function createObstacle() {
 // Dibujar obstáculos
 function drawObstacles() {
 	obstacles.forEach((obstacle) => {
-		ctx.fillStyle = "black"; // Color fijo
+		ctx.fillStyle = "darkgreen"; // Color fijo
 		ctx.fillRect(
 			obstacle.x,
 			canvas.height - obstacle.height - 10,
@@ -89,7 +89,8 @@ function updateObstacles() {
 			pandaX < obstacle.x + obstacleWidth &&
 			pandaY + spriteHeight > canvas.height - obstacle.height - 10
 		) {
-			points = Math.max(0, points - 10); // Puntuación nunca negativa
+			points = Math.max(0, points - 3); // Puntuación nunca negativa
+			pandaIndex--;
 			obstacles.splice(index, 1);
 
 			if (points === 0) {
@@ -103,12 +104,15 @@ function updateObstacles() {
 			obstacles.splice(index, 1);
 			points++;
 			if (points > maxScore) maxScore = points; // Puntuación máxima
-			if (points % 5 === 0) {
-				obstacleSpeed += 0.125; // Incremento gradual de velocidad
-			}
-			if (points % 10 === 0) {
+			if (points % 3 === 0) {
+				obstacleSpeed += 0.5; // Incremento gradual de velocidad
 				pandaIndex++; // Cambia al siguiente sprite
 				console.log(`Nivel: ${pandaIndex}`);
+				if (pandaIndex > 8) {
+					pandaIndex = 0;
+					obstacleSpeed++;
+					pandaX++;
+				}
 			}
 		}
 	});
@@ -118,7 +122,7 @@ function updateObstacles() {
 function displayMessage(message, subMessage = "") {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = "black";
-	ctx.font = "20px Arial";
+	ctx.font = "12px Arial";
 	ctx.textAlign = "center";
 	ctx.fillText(message, canvas.width / 2, canvas.height / 2);
 	if (subMessage) {
@@ -163,8 +167,9 @@ function updateGame() {
 
 	// Mostrar la puntuación
 	ctx.fillStyle = "black";
-	ctx.font = "20px Arial";
-	ctx.fillText(`Puntos: ${points}`, 10, 20);
+	ctx.font = "15px Arial";
+	ctx.textAlign = "flex-start";
+	ctx.fillText(`Puntos: ${points}`, canvas.width / 2, 30);
 	console.log(`Puntos: ${points}`);
 }
 
