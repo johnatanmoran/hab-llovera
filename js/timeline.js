@@ -1,6 +1,6 @@
 "use-stric";
 
-function fondoClimas(clima) {
+export function fondoClimas(clima) {
 	const body = document.body;
 	if (clima === "Clear") {
 		body.style.backgroundImage =
