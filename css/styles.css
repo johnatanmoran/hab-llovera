@@ -1,0 +1,130 @@
+html,
+body {
+	height: 100%;
+	margin: auto;
+	padding: auto;
+	font-size: 18px;
+	font-family: Arial, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+}
+
+body {
+	height: 100%;
+
+	overflow: hidden;
+}
+/*  */
+#header section {
+	padding: 4rem 0 4rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+#titleArticle {
+	background-color: #59595985;
+	color: white;
+	text-shadow: 3px 3px 6px rgba(0.2, 0.2, 0.2, 0.6);
+	padding: 1rem;
+	max-width: min-content;
+	border-radius: 1rem;
+	border: none;
+	
+}
+
+#mainArticle,
+#mainFooter {
+	margin: 0.2rem;
+}
+
+#mainArticle div {
+	margin: 0.5rem;
+}
+
+#location {
+	
+	
+	font-size: 2rem;
+	display: flex;
+    flex-wrap: wrap;           
+    justify-content: center;
+	word-wrap: break-word;
+	white-space: normal;
+	text-align: center;
+	overflow-wrap: break-word;
+	max-width: 100%;
+	
+}
+
+#temperature {
+	font-size: 5rem;
+
+	text-align: center;
+}
+
+#spoiler {
+	font-size: 1rem;
+	color: #949494;
+	text-align: center;
+}
+
+#mainFooter {
+	display: flex;
+	gap: 1rem;
+	margin: 0.5rem;
+	justify-content: center;
+}
+
+/* preparamos los contenedores para recibir los valores de la api y 
+mostrarlos al "cliente" */
+
+#mainLine {
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	justify-items: center;
+	gap: 1rem;
+	grid-template-areas:
+		"horas"
+		"hora";
+	align-items: center;
+	width: auto;
+	height: 20%;
+	padding: auto;
+	margin: auto;
+}
+
+
+.timeLine {
+    display: flex;
+    justify-content: center; 
+    align-items: center;      
+    gap: 1rem;                
+}
+
+.timeLine > div {
+	border-radius: 2rem;
+	border: none;
+	background-color: #59595985;
+	color: white;
+	text-shadow: 3px 3px 6px rgba(0.2, 0.2, 0.2, 0.9);
+	padding: 0.8rem 1rem;
+	height: 1rem;
+	width: 3rem;
+	text-align: center;
+}
+
+#col1 {
+	display: flex;
+	gap: 1rem;
+	grid-area: "horas";
+	width: 100%;
+	justify-content: center;
+}
+#col2 {
+	display: flex;
+	gap: 1rem;
+	grid-area: "hora";
+	width: 100%;
+	justify-content: center;
+}
