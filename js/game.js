@@ -34,7 +34,15 @@ for (let i = 1; i <= 11; i++) {
 const obstacleImg = new Image();
 obstacleImg.src = `media/killerpanda/sprites/bambu_01.png`;
 
-console.log(pandaSprites);
+// Cargo los sprites de las plantas
+const plantaImg = new Image();
+plantaImg.src = `media/killerpanda/sprites/planta_01.png`;
+
+// Configuración de plantas
+const plantas = [];
+const plantasSpacing = 600; // Mayor separación
+
+//console.log(pandaSprites);
 
 // Variables para controlar el estado del juego
 let gamePaused = true;
@@ -70,6 +78,19 @@ function createObstacle() {
 	}
 }
 
+// Generar nuevas plantas
+function createPlanta() {
+	if (gamePaused || gameOver) return;
+
+	// Probabilidad de generar una planta
+	const shouldCreatePlanta = Math.random() > 0.1; // 90% de probabilidad
+	if (shouldCreatePlanta) {
+		const x = canvas.width;
+		const alpha = Math.random() * Math.PI * 2;
+		plantas.push({ x, alpha });
+	}
+}
+
 // Dibujar obstáculos
 function drawObstacles() {
 	obstacles.forEach((obstacle) => {
@@ -87,6 +108,19 @@ function drawObstacles() {
 		//	obstacleWidth,
 		//	obstacle.height
 		//);
+	});
+}
+
+// Dibujar plantas
+function drawPlantas() {
+	plantas.forEach((planta) => {
+		ctx.drawImage(
+			plantaImg,
+			planta.x,
+			canvas.height - planta.height - 10,
+			40,
+			40
+		);
 	});
 }
 
@@ -126,6 +160,18 @@ function updateObstacles() {
 					pandaX += 10;
 				}
 			}
+		}
+	});
+}
+
+// Actualizar plantas
+function updatePlantas() {
+	plantas.forEach((planta, index) => {
+		planta.x -= plantasSpeed;
+
+		// planta pasa
+		if (planta.x + 40 < 0) {
+			plantas.splice(index, 1);
 		}
 	});
 }
@@ -185,6 +231,8 @@ function updateGame() {
 	drawPanda();
 	updateObstacles();
 	drawObstacles();
+	updatePlantas();
+	drawPlantas();
 
 	// Mostrar la puntuación
 	ctx.fillStyle = "black";
@@ -289,3 +337,9 @@ setInterval(() => {
 		createObstacle();
 	}
 }, obstacleSpacing);
+
+setInterval(() => {
+	if (!gamePaused && !gameOver) {
+		createPlanta();
+	}
+}, plantSpacing);

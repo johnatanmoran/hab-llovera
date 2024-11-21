@@ -43,6 +43,7 @@ const currentTemperature = document.getElementById("temperature"); // Temperatur
 const currentWeather = document.getElementById("spoiler"); // Descripcion del clima
 const maxTemp = document.getElementById("maxTemp"); // Temperatura maxima
 const minTemp = document.getElementById("minTemp"); // Temperatura minima
+const currentTime = document.getElementById("horaUno"); // Hora actual
 const col1 = document.getElementById("col1"); // Columna de tiempo 1
 const divsCol1 = col1.getElementsByTagName("div"); // Divisiones de tiempo 1
 const col2 = document.getElementById("col2"); // Columna de tiempo 2
@@ -56,6 +57,11 @@ async function main() {
 
 		// Inyectar los datos en el HTML
 		currentLocation.textContent = locationData.city;
+		currentTime.textContent = `${
+			String(date.hours).padStart(2, "0") +
+			":" +
+			String(date.minutes).padStart(2, "0")
+		}`;
 		for (let i = 0; i < 4; i++) {
 			divsCol1[i].textContent = `${
 				String(date.hours + i).padStart(2, "0") +
