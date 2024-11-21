@@ -22,11 +22,15 @@ body {
 	flex-wrap: wrap;
 }
 
-#header article {
-	background-color: #595959;
+#titleArticle {
+	background-color: #59595985;
 	color: white;
+	text-shadow: 3px 3px 6px rgba(0.2, 0.2, 0.2, 0.6);
 	padding: 1rem;
 	max-width: min-content;
+	border-radius: 1rem;
+	border: none;
+	
 }
 
 #mainArticle,
@@ -40,8 +44,17 @@ body {
 
 #location {
 	
+	
 	font-size: 2rem;
+	display: flex;
+    flex-wrap: wrap;           
+    justify-content: center;
+	word-wrap: break-word;
+	white-space: normal;
 	text-align: center;
+	overflow-wrap: break-word;
+	max-width: 100%;
+	
 }
 
 #temperature {
@@ -68,24 +81,33 @@ mostrarlos al "cliente" */
 
 #mainLine {
 	display: grid;
-	grid-template-rows: 50% 50%;
-
+	grid-template-rows: 1fr 1fr;
+	justify-items: center;
 	gap: 1rem;
 	grid-template-areas:
 		"horas"
 		"hora";
 	align-items: center;
-	width: 50%;
+	width: auto;
 	height: 20%;
 	padding: auto;
 	margin: auto;
 }
 
+
+.timeLine {
+    display: flex;
+    justify-content: center; 
+    align-items: center;      
+    gap: 1rem;                
+}
+
 .timeLine > div {
 	border-radius: 2rem;
 	border: none;
-	background-color: #595959;
+	background-color: #59595985;
 	color: white;
+	text-shadow: 3px 3px 6px rgba(0.2, 0.2, 0.2, 0.9);
 	padding: 0.8rem 1rem;
 	height: 1rem;
 	width: 3rem;
