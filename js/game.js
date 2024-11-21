@@ -123,7 +123,6 @@ function updateObstacles() {
 				if (pandaIndex > 10) {
 					pandaIndex = 0;
 					obstacleSpeed++;
-					pandaX++;
 					pandaX += 10;
 				}
 			}
