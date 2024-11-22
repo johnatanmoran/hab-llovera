@@ -32,7 +32,7 @@ export async function obtenerClima(city) {
 			viento_actual: data.current.wind_kph,
 			temperatura_max: data.forecast.forecastday[0].day.maxtemp_c,
 			temperatura_min: data.forecast.forecastday[0].day.mintemp_c,
-			dia: data.forecast.forecastday[0].day,
+			dia: data.current.day,
 			predicciones_horarias: data.forecast.forecastday[0].hour
 				.slice(currentHour, currentHour + 9)
 				.map((hour) => ({
