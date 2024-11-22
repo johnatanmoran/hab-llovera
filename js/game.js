@@ -89,7 +89,6 @@ function createPlanta() {
 		const alpha = Math.random();
 		const size = Math.floor(Math.random() * 41) + 10;
 		plantas.push({ x, alpha, size });
-		console.log(`Planta creada ${size} x ${size} OPC:${alpha} `);
 	}
 }
 
@@ -140,12 +139,16 @@ function updateObstacles() {
 			pandaY + spriteHeight > canvas.height - obstacle.height - 10
 		) {
 			points = Math.max(0, points - 3); // Puntuación nunca negativa
-			pandaIndex--;
-			obstacles.splice(index, 1);
-
-			if (points === 0) {
+			console.log(`Nivel: ${pandaIndex} -`);
+			//obstacles.splice(index, 1);
+			if (points < 1) {
 				gameOver = true;
 				handleGameOver();
+			}
+			if (pandaIndex > 0) {
+				pandaIndex--;
+			} else {
+				console.log(`matar panda`);
 			}
 		}
 
@@ -157,7 +160,7 @@ function updateObstacles() {
 			if (points % 3 === 0) {
 				obstacleSpeed += 0.5; // Incremento gradual de velocidad
 				pandaIndex++; // Cambia al siguiente sprite
-				console.log(`Nivel: ${pandaIndex}`);
+				console.log(`Nivel: ${pandaIndex} +`);
 				if (pandaIndex > 10) {
 					pandaIndex = 0;
 					obstacleSpeed++;
@@ -224,7 +227,7 @@ function updateGame() {
 		if (pandaY > canvas.height - spriteHeight - 10) {
 			pandaY = canvas.height - spriteHeight - 10;
 			isJumping = false;
-			console.log("Salto finalizado");
+			//console.log("Salto finalizado");
 		} //else if (pandaY === canvas.height - spriteHeight) {
 		//	console.log(`Techo a ${pandaY}`);
 		//} else {

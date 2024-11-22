@@ -1,0 +1,99 @@
+/* Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+	background-color: #f5f5f5;
+	font-family: Arial, sans-serif;
+	color: #333;
+}
+
+/* Estilos para el header */
+header {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#titleArticle {
+	display: flex;
+	align-items: center;
+}
+
+#mainArticle {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#location {
+	font-size: 2rem;
+	margin-right: 10px;
+}
+
+#temperature {
+	font-size: 2rem;
+}
+
+#spoiler {
+	font-size: 1.5rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+#mainFooter {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#maxTemp {
+	font-size: 1.5rem;
+}
+
+#minTemp {
+	font-size: 1.5rem;
+}
+
+/* Estilos para el main */
+#mainLine {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.timeLine {
+	width: 100px;
+	height: 100px;
+	border: 1px solid #333;
+	border-radius: 50%;
+	margin: 10px;
+	position: relative;
+}
+
+.timeLine div {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+/* Estilos para el footer */
+footer {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

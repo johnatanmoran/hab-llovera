@@ -63,7 +63,7 @@ export async function userLocation() {
 			latitude: null,
 			longitude: null,
 			accuracy: null,
-			error: ensajeError,
+			error: mensajeError,
 		};
 	}
 }
