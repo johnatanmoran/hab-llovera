@@ -44,7 +44,7 @@ export async function obtenerClima(city) {
 				})),
 		};
 		if (currentHour > 16) {
-			for (let i = 0; i < 19 - currentHour; i++) {
+			for (let i = 0; i < 24 - currentHour; i++) {
 				weatherInfo.predicciones_horarias.push({
 					hora: data.forecast.forecastday[1].hour[i].time.split(
 						" "
