@@ -6,7 +6,7 @@ const api_key = "ed452b84c18741c7ab0164850242111";
 // Función principal para obtener el clima
 export async function obtenerClima(city) {
 	// el parametro city tambien puedde ser una latitud longotud ~ 48.8567,2.3508
-	const url = `https://api.weatherapi.com/v1/forecast.json?key=${api_key}&q=${city}&days&hours=1&lang=es`;
+	const url = `https://api.weatherapi.com/v1/forecast.json?key=${api_key}&q=${city}&days=2&hours=8&lang=es`;
 
 	// Realizar la solicitud con fetch
 	try {
@@ -34,7 +34,7 @@ export async function obtenerClima(city) {
 			temperatura_min: data.forecast.forecastday[0].day.mintemp_c,
 			dia: data.forecast.forecastday[0].day,
 			predicciones_horarias: data.forecast.forecastday[0].hour
-				.slice(currentHour, currentHour + 8)
+				.slice(currentHour, currentHour + 9)
 				.map((hour) => ({
 					hora: hour.time.split(" ")[1],
 					temperatura: hour.temp_c,
@@ -43,6 +43,19 @@ export async function obtenerClima(city) {
 					viento: hour.wind_kph,
 				})),
 		};
+		if (currentHour > 16) {
+			for (let i = 0; i < 19 - currentHour; i++) {
+				weatherInfo.predicciones_horarias.push({
+					hora: data.forecast.forecastday[1].hour[i].time.split(
+						" "
+					)[1],
+					temperatura: 0,
+					descripcion: "Despejado",
+					humedad: 0,
+					viento: 0,
+				});
+			}
+		}
 
 		return weatherInfo; // Devuelve el objeto final
 	} catch (error) {

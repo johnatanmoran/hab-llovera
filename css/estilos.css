@@ -7,28 +7,26 @@
 
 /* Variables */
 :root {
-	--color-cuadros: rgba(0, 0, 0, 0.5);
+	--color-cuadros: rgba(25, 25, 25, 0.5);
 }
 /* Estilos generales */
 body {
 	font-family: Arial, sans-serif;
 	color: #333;
+	margin-top: 2rem;
 }
 
 /* Estilos para el header */
 header {
 	color: #fff;
-	padding: 20px;
-	align-content: center;
-	align-items: center;
-	justify-content: center;
+	padding: 1rem;
+	text-align: center;
 }
 
 header > section {
 	width: fit-content;
 	background-color: var(--color-cuadros);
 	border-radius: 1rem;
-	padding: 0.5rem;
 	margin: auto;
 }
 
@@ -41,7 +39,7 @@ header > section {
 }
 
 #mainArticle {
-	isplay: flex;
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -123,13 +121,20 @@ header > section {
 }
 
 /* Estilos para el main */
+
+#mainLine {
+	width: auto;
+	padding: 1rem;
+	font-weight: bold;
+}
+
 #mainLine > div {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1rem;
-	grid-area: "hora";
+	display: grid;
+	grid-template: 1fr / 1fr 1fr;
 	width: 100%;
 	justify-content: center;
+	padding: 0 1rem 1rem 1rem;
+	gap: 1rem;
 }
 
 .timeLine {
@@ -139,27 +144,68 @@ header > section {
 
 .timeLine > div {
 	padding: 1rem;
-	border-radius: 0.5rem;
+	border-radius: 1.25rem;
 	background-color: var(--color-cuadros);
 }
 
 .timeLine > div > section {
+	text-align: center;
 }
 
-/* Estilos para el footer */
-footer {
-	background-color: #333;
-	color: #fff;
-	padding: 20px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+.hora::before {
+	content: "🕰️ ";
 }
 
-button {
-	background-color: #0077cc;
-	color: white;
-	border: none;
-	padding: 10px 20px;
-	cursor: pointer;
+.temperatura::before {
+	content: "🌡️ ";
+}
+.clima::before {
+	content: "🌤️ \A";
+	white-space: pre-wrap;
+}
+.clima {
+	margin: 1rem 0;
+}
+.humedad::before {
+	content: "💦 ";
+}
+.viento::before {
+	content: "🌬️ ";
+}
+
+.dia::before,
+.noche::before {
+	position: relative;
+	top: -0.5em;
+	width: 100%;
+	text-align: right;
+	font-size: 3rem;
+}
+.dia::before {
+	content: "🌞 ";
+}
+
+.noche::before {
+	content: "🌙 ";
+}
+
+/* Breakpoint para tabletas (mínimo 768px) */
+@media (min-width: 768px) {
+	#mainLine > div {
+		grid-template: 1fr / 1fr 1fr 1fr 1fr;
+	}
+}
+
+/* Breakpoint para laptops (mínimo 1024px) */
+@media (min-width: 1440px) {
+	#mainLine {
+		display: flex;
+		gap: 1rem;
+	}
+	#col1.timeLine {
+		padding: 0 0 0 2rem;
+	}
+	#col2.timeLine {
+		padding: 0 2rem 0 0;
+	}
 }

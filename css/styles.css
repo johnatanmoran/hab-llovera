@@ -123,11 +123,3 @@ mostrarlos al "cliente" */
 	width: 100%;
 	justify-content: center;
 }
-
-button {
-	background-color: #0077cc;
-	color: white;
-	border: none;
-	padding: 10px 20px;
-	cursor: pointer;
-}

@@ -207,28 +207,38 @@ async function main() {
 		for (let i = 0; i < 4; i++) {
 			divsCol1[i].textContent = "";
 			divsCol1[i].innerHTML = `
-				<section id="hora${i}">${weatherData.predicciones_horarias[i].hora}</section>
-				<section id="temperatura${i}">${weatherData.predicciones_horarias[i].temperatura}°C</section>
-				<section id="descripcion${i}">${weatherData.predicciones_horarias[i].descripcion}</section>
-				<section id="humedad${i}">${weatherData.predicciones_horarias[i].humedad}%</section>
-				<section id="viento${i}">${weatherData.predicciones_horarias[i].viento} km/h</section>
+				<section id="hora${i}" class="hora">${
+				weatherData.predicciones_horarias[i + 1].hora
+			}</section>
+				<section id="temperatura${i}" class="temperatura">${
+				weatherData.predicciones_horarias[i + 1].temperatura
+			}°C</section>
+				<section id="descripcion${i}" class="clima">${
+				weatherData.predicciones_horarias[i + 1].descripcion
+			}</section>
+				<section id="humedad${i}" class="humedad">${
+				weatherData.predicciones_horarias[i + 1].humedad
+			}%</section>
+				<section id="viento${i}" class="viento">${
+				weatherData.predicciones_horarias[i + 1].viento
+			} km/h</section>
 			`;
 			divsCol2[i].textContent = "";
 			divsCol2[i].innerHTML = `
-				<section id="hora${i + 4}">${
-				weatherData.predicciones_horarias[i].hora
+				<section id="hora${i + 4}" class="hora">${
+				weatherData.predicciones_horarias[i + 5].hora
 			}</section>
-				<section id="temperatura${i + 4}">${
-				weatherData.predicciones_horarias[i].temperatura
+				<section id="temperatura${i + 4}" class="temperatura">${
+				weatherData.predicciones_horarias[i + 5].temperatura
 			}°C</section>
-				<section id="descripcion${i + 4}">${
-				weatherData.predicciones_horarias[i].descripcion
+				<section id="descripcion${i + 4}" class="clima">${
+				weatherData.predicciones_horarias[i + 5].descripcion
 			}</section>
-				<section id="humedad${i + 4}">${
-				weatherData.predicciones_horarias[i].humedad
+				<section id="humedad${i + 4}" class="humedad">${
+				weatherData.predicciones_horarias[i + 5].humedad
 			}%</section>
-				<section id="viento${i + 4}">${
-				weatherData.predicciones_horarias[i].viento
+				<section id="viento${i + 4}" class="viento">${
+				weatherData.predicciones_horarias[i + 5].viento
 			} km/h</section>
 			`;
 		}
