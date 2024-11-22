@@ -5,33 +5,47 @@
 	box-sizing: border-box;
 }
 
+/* Variables */
+:root {
+	--color-cuadros: rgba(0, 0, 0, 0.5);
+}
 /* Estilos generales */
 body {
-	background-color: #f5f5f5;
 	font-family: Arial, sans-serif;
 	color: #333;
 }
 
 /* Estilos para el header */
 header {
-	background-color: #333;
 	color: #fff;
 	padding: 20px;
-	display: flex;
-	justify-content: space-between;
+	align-content: center;
 	align-items: center;
+	justify-content: center;
+}
+
+header > section {
+	width: fit-content;
+	background-color: var(--color-cuadros);
+	border-radius: 1rem;
+	padding: 0.5rem;
+	margin: auto;
 }
 
 #titleArticle {
 	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
 	align-items: center;
 }
 
 #mainArticle {
-	display: flex;
+	isplay: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding: 1.5rem;
 }
 
 #location {
@@ -45,47 +59,91 @@ header {
 
 #spoiler {
 	font-size: 1.5rem;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
+	padding: 1rem;
 }
 
 #mainFooter {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-#maxTemp {
-	font-size: 1.5rem;
+#mainFooter div {
+	text-align: center;
+	padding: 10px 0;
 }
 
-#minTemp {
-	font-size: 1.5rem;
+#maxTemp,
+#minTemp,
+#viento,
+#humedad {
+	flex: 1 1 calc(50% - 10px); /* Ocupa el 50% menos el gap */
+}
+
+#maxTemp::after,
+#minTemp::after {
+	content: "°C";
+}
+
+#viento::after {
+	display: inline-block;
+	content: " km\A/h";
+	white-space: pre-wrap;
+	vertical-align: middle;
+	font-size: 0.5rem;
+	line-height: 0.5rem;
+	text-align: right;
+}
+
+#humedad::after {
+	content: " %";
+}
+
+#maxTemp::before {
+	content: "🔺 ";
+}
+
+#minTemp::before {
+	content: "🔻 ";
+}
+
+#viento::before {
+	content: "🌬️ ";
+}
+#humedad::before {
+	content: "💦  ";
+}
+
+#horaUno::before {
+	content: "Hora actual: ";
+}
+
+#horaUno {
+	padding: 1rem;
 }
 
 /* Estilos para el main */
-#mainLine {
+#mainLine > div {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+	grid-area: "hora";
+	width: 100%;
+	justify-content: center;
 }
 
 .timeLine {
-	width: 100px;
-	height: 100px;
-	border: 1px solid #333;
-	border-radius: 50%;
-	margin: 10px;
-	position: relative;
+	padding: 1rem 0 0 0;
+	color: #fff;
 }
 
-.timeLine div {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	font-size: 2rem;
-	font-weight: bold;
+.timeLine > div {
+	padding: 1rem;
+	border-radius: 0.5rem;
+	background-color: var(--color-cuadros);
+}
+
+.timeLine > div > section {
 }
 
 /* Estilos para el footer */
@@ -96,4 +154,12 @@ footer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+button {
+	background-color: #0077cc;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
 }

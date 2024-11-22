@@ -167,16 +167,16 @@ async function main() {
 		currentWeather.textContent = weatherData.descripcion_actual;
 
 		// Temperatura maxima
-		maxTemp.textContent = `${weatherData.temperatura_max}°C`;
+		maxTemp.textContent = `${weatherData.temperatura_max}`;
 
 		// Temperatura minima
-		minTemp.textContent = `${weatherData.temperatura_min}°C`;
+		minTemp.textContent = `${weatherData.temperatura_min}`;
 
 		// Humedad
-		humedad.textContent = `${weatherData.humedad_actual}%`;
+		humedad.textContent = `${weatherData.humedad_actual}`;
 
 		// Viento
-		viento.textContent = `${weatherData.viento_actual} km/h`;
+		viento.textContent = `${weatherData.viento_actual}`;
 
 		// Clase si es día o noche
 		if (weatherData.dia) {
@@ -257,3 +257,19 @@ main();
 			}`;
 		}
 */
+
+// Obtener el enlace al archivo CSS y el botón
+const themeLink = document.getElementById("theme-link");
+const toggleButton = document.getElementById("toggle-theme");
+
+// Ruta de los archivos CSS
+const style1 = "css/estilos.css";
+const style2 = "css/styles.css";
+
+// Alternar entre los estilos
+toggleButton.addEventListener("click", () => {
+	// Cambiar entre los archivos CSS
+	const currentStyle = themeLink.getAttribute("href");
+	const newStyle = currentStyle === style1 ? style2 : style1;
+	themeLink.setAttribute("href", newStyle);
+});
