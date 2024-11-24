@@ -1,0 +1,17 @@
+#menu {
+	position: fixed;
+	box-sizing: border-box;
+	bottom: 0;
+	width: 100vw;
+}
+
+button {
+	background-color: #0077cc;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	margin: 0;
+	box-sizing: border-box;
+	width: 100%;
+}

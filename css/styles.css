@@ -30,7 +30,6 @@ body {
 	max-width: min-content;
 	border-radius: 1rem;
 	border: none;
-	
 }
 
 #mainArticle,
@@ -43,18 +42,15 @@ body {
 }
 
 #location {
-	
-	
 	font-size: 2rem;
 	display: flex;
-    flex-wrap: wrap;           
-    justify-content: center;
+	flex-wrap: wrap;
+	justify-content: center;
 	word-wrap: break-word;
 	white-space: normal;
 	text-align: center;
 	overflow-wrap: break-word;
 	max-width: 100%;
-	
 }
 
 #temperature {
@@ -95,12 +91,11 @@ mostrarlos al "cliente" */
 	margin: auto;
 }
 
-
 .timeLine {
-    display: flex;
-    justify-content: center; 
-    align-items: center;      
-    gap: 1rem;                
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
 }
 
 .timeLine > div {

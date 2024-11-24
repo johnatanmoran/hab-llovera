@@ -1,0 +1,211 @@
+/* Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+	--color-cuadros: rgba(25, 25, 25, 0.5);
+}
+/* Estilos generales */
+body {
+	font-family: Arial, sans-serif;
+	color: #333;
+	margin-top: 2rem;
+}
+
+/* Estilos para el header */
+header {
+	color: #fff;
+	padding: 1rem;
+	text-align: center;
+}
+
+header > section {
+	width: fit-content;
+	background-color: var(--color-cuadros);
+	border-radius: 1rem;
+	margin: auto;
+}
+
+#titleArticle {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+#mainArticle {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0 1.5rem;
+}
+
+#location {
+	font-size: 2rem;
+}
+
+#temperature {
+	font-size: 2rem;
+}
+
+#spoiler {
+	font-size: 1.5rem;
+	padding: 1rem;
+}
+
+#mainFooter {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+#mainFooter div {
+	text-align: center;
+	padding: 10px 0;
+}
+
+#maxTemp,
+#minTemp,
+#viento,
+#humedad {
+	flex: 1 1 calc(50% - 10px); /* Ocupa el 50% menos el gap */
+}
+
+#maxTemp::after,
+#minTemp::after {
+	content: "°C";
+}
+
+#viento::after {
+	display: inline-block;
+	content: " km\A/h";
+	white-space: pre-wrap;
+	vertical-align: middle;
+	font-size: 0.5rem;
+	line-height: 0.5rem;
+	text-align: right;
+}
+
+#humedad::after {
+	content: " %";
+}
+
+#maxTemp::before {
+	content: "🔺 ";
+}
+
+#minTemp::before {
+	content: "🔻 ";
+}
+
+#viento::before {
+	content: "🌬️ ";
+}
+#humedad::before {
+	content: "💦  ";
+}
+
+#horaUno::before {
+	content: "Hora actual: ";
+}
+
+#horaUno {
+	padding: 1rem;
+}
+
+/* Estilos para el main */
+
+#mainLine {
+	width: auto;
+	padding: 1rem;
+	font-weight: bold;
+}
+
+#mainLine > div {
+	display: grid;
+	grid-template: 1fr / 1fr 1fr;
+	width: 100%;
+	justify-content: center;
+	padding: 0 1rem 1rem 1rem;
+	gap: 1rem;
+}
+
+.timeLine {
+	padding: 1rem 0 0 0;
+	color: #fff;
+}
+
+.timeLine > div {
+	padding: 1rem;
+	border-radius: 1.25rem;
+	background-color: var(--color-cuadros);
+}
+
+.timeLine > div > section {
+	text-align: center;
+}
+
+.hora::before {
+	content: "🕰️ ";
+}
+
+.temperatura::before {
+	content: "🌡️ ";
+}
+.clima::before {
+	content: "🌤️ \A";
+	white-space: pre-wrap;
+}
+.clima {
+	margin: 1rem 0;
+}
+.humedad::before {
+	content: "💦 ";
+}
+.viento::before {
+	content: "🌬️ ";
+}
+
+.dia::before,
+.noche::before {
+	position: relative;
+	top: -0.5em;
+	width: 100%;
+	text-align: right;
+	font-size: 3rem;
+	padding-right: 3rem;
+}
+.dia::before {
+	content: "🌞 ";
+}
+
+.noche::before {
+	content: "🌙 ";
+}
+
+/* Breakpoint para tabletas (mínimo 768px) */
+@media (min-width: 768px) {
+	#mainLine > div {
+		grid-template: 1fr / 1fr 1fr 1fr 1fr;
+	}
+}
+
+/* Breakpoint para laptops (mínimo 1024px) */
+@media (min-width: 1440px) {
+	#mainLine {
+		display: flex;
+		gap: 1rem;
+	}
+	#col1.timeLine {
+		padding: 0 0 0 2rem;
+	}
+	#col2.timeLine {
+		padding: 0 2rem 0 0;
+	}
+}
