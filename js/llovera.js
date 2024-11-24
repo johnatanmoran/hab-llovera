@@ -83,7 +83,7 @@ async function main() {
 		);
 
 		// Temperatura Actual
-		currentTemperature.textContent = `${weatherData.temperatura_actual}°C`;
+		currentTemperature.textContent = `${weatherData.temperatura_actual}`;
 
 		// Temperatura maxima
 		maxTemp.textContent = `${weatherData.temperatura_max}`;
@@ -118,13 +118,13 @@ async function main() {
 				<section id="descripcion-plus-${i + 1}" class="clima">${
 				weatherData.predicciones_horarias[i + 1].descripcion
 			}</section>
-				<section id="humedad-plus-${i + 1}" class="humedad">${
-				weatherData.predicciones_horarias[i + 1].humedad
-			}</section>
-				<section id="viento-plus-${i + 1}" class="viento">${
+			<section id="viento-plus-${i + 1}" class="viento">${
 				weatherData.predicciones_horarias[i + 1].viento
 			}
-				</section>
+			</section>
+			<section id="humedad-plus-${i + 1}" class="humedad">${
+				weatherData.predicciones_horarias[i + 1].humedad
+			}</section>
 			`;
 			forecastPlusSections[i].innerHTML = "";
 			forecastPlusSections[i].innerHTML = htmlInterno;
