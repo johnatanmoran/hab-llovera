@@ -3,48 +3,68 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="css/switcher.css" />
-		<link id="theme-link" rel="stylesheet" href="css/styles.css" />
-		<script type="module" src="js/app.js"></script>
+		<link id="theme-link" rel="stylesheet" href="css/app.css" />
+		<script type="module" src="js/llovera.js" defer></script>
 		<title>¿Lloverá?</title>
 	</head>
-	<body>
-		<header id="header">
-			<section>
-				<article id="titleArticle">
-					<div id="mainArticle">
-						<div id="location">Nether</div>
-						<div id="temperature">60º</div>
-					</div>
-					<div id="spoiler">Despejado</div>
-
-					<div id="mainFooter">
-						<div id="maxTemp">69º</div>
-						<div id="minTemp">42º</div>
-						<div id="humedad">10%</div>
-						<div id="viento">42 km/h</div>
-					</div>
-					<div id="horaUno">cerocero</div>
-				</article>
-			</section>
+	<body id="app">
+		<header>
+			<nav id="menu">
+				<ul>
+					<li>
+						<a href="killerpanda.html" target="_blank"
+							>Juego Killer Panda</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://github.com/johnatanmoran/hab-llovera"
+							target="_blank"
+							>Repositorio GitHub</a
+						>
+					</li>
+				</ul>
+			</nav>
 		</header>
-
-		<main id="mainLine">
-			<div class="timeLine" id="col1">
-				<div>22:22</div>
-				<div>22:22</div>
-				<div>22:22</div>
-				<div>22:22</div>
-			</div>
-			<div class="timeLine" id="col2">
-				<div>22:22</div>
-				<div>22:22</div>
-				<div>22:22</div>
-				<div>22:22</div>
-			</div>
+		<section id="loader"></section>
+		<main id="contenedor-principal" class="dia">
+			<section id="current">
+				<div id="current-weather">
+					<div id="location">
+						<h1 class="city">Nombre de una ciudad</h1>
+						<h2	class="region">Region de la ciudad</h2>
+						<h3 class="country">Pais</h3>
+					</div>
+					<div id="current-temperature">00</div>
+					<div id="description">Descripcion del clima</div>
+				</div>
+				<div id="current-weather-icon"></div>
+				<div id="details">
+					<div class="double-column">
+						<div id="max-temperature" class="temperatura">00</div>
+						<div id="min-temperature" class="temperatura">00</div>
+					</div>
+					<div class="double-column">
+						<div id="wind" class="viento">00</div>
+						<div id="humidity" class="humedad">00</div>
+					</div>
+					<div id="current-time" class="hora">00:00</div>
+				</div>
+			</section>
+			<section id="forecast">
+				<div class="forecast-plus-1">1</div>
+				<div class="forecast-plus-2">2</div>
+				<div class="forecast-plus-3">3</div>
+				<div class="forecast-plus-4">4</div>
+				<div class="forecast-plus-5">5</div>
+				<div class="forecast-plus-6">6</div>
+				<div class="forecast-plus-7">7</div>
+				<div class="forecast-plus-8">8</div>
+			</section>
 		</main>
-		<nav id="menu">
-			<button id="toggle-theme">Cambiar Estilo</button>
-		</nav>
+		<footer>
+			<section id="credits">
+				<p>Desarrollado por <a href="killerpanda.html"><img src="media/killerpanda/killerpanda-izquierda.png" alt="Killer Panda"></a> (A.K.A. Grupo 2) del bootcamp JSB41RT de <a href="https://hackaboss.com">Hack A Boss</a>. Implementado con <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a> ©️ 2024</p>
+		</footer>
 	</body>
 </html>
