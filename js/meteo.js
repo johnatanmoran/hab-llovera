@@ -28,6 +28,7 @@ export async function obtenerClima(city) {
 			pais: data.location.country,
 			temperatura_actual: data.current.temp_c,
 			descripcion_actual: data.current.condition.text,
+			icono_actual: data.current.condition.icon,
 			humedad_actual: data.current.humidity,
 			viento_actual: data.current.wind_kph,
 			temperatura_max: data.forecast.forecastday[0].day.maxtemp_c,
@@ -39,20 +40,23 @@ export async function obtenerClima(city) {
 					hora: hour.time.split(" ")[1],
 					temperatura: hour.temp_c,
 					descripcion: hour.condition.text,
+					icono: hour.condition.icon,
 					humedad: hour.humidity,
 					viento: hour.wind_kph,
 				})),
 		};
-		if (currentHour > 16) {
+		if (currentHour > 15) {
 			for (let i = 0; i < 24 - currentHour; i++) {
 				weatherInfo.predicciones_horarias.push({
 					hora: data.forecast.forecastday[1].hour[i].time.split(
 						" "
 					)[1],
-					temperatura: 0,
-					descripcion: "Despejado",
-					humedad: 0,
-					viento: 0,
+					temperatura: data.forecast.forecastday[1].hour[i].temp_c,
+					descripcion:
+						data.forecast.forecastday[1].hour[i].condition.text,
+					icono: data.forecast.forecastday[1].hour[i].condition.icon,
+					humedad: data.forecast.forecastday[1].hour[i].humidity,
+					viento: data.forecast.forecastday[1].hour[i].wind_kph,
 				});
 			}
 		}

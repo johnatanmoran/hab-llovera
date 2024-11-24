@@ -7,7 +7,7 @@
 		<script type="module" src="js/llovera.js" defer></script>
 		<title>¿Lloverá?</title>
 	</head>
-	<body>
+	<body id="app">
 		<header>
 			<nav id="menu">
 				<ul>
@@ -34,12 +34,12 @@
 		<main id="contenedor-principal" class="dia">
 			<section id="loader"></section>
 			<section id="current">
-				<header id="location">
-					<h1 class="city">Nombre de una ciudad</h1>
-					<h2	class="region">Region de la ciudad</h2>
-					<h3 class="country">Pais</h3>
-				</header>
 				<div id="current-weather">
+					<div id="location">
+						<h1 class="city">Nombre de una ciudad</h1>
+						<h2	class="region">Region de la ciudad</h2>
+						<h3 class="country">Pais</h3>
+					</div>
 					<div id="current-weather-icon"></div>
 					<div id="description">Descripcion del clima</div>
 					<div id="current-temperature" class="temperatura">00</div>
@@ -67,7 +67,7 @@
 		</main>
 		<footer>
 			<section id="credits">
-				<p>Desarrollado por <a href="killerpanda.html">Grupo 2 ( A.K.A. <img src="media/killerpanda/killerpanda-izquierda.png" alt="Killer Panda"> )</a> para <a href="https://hackaboss.com">Hack A Boss</a>. ©️ 2024</p>
+				<p>Desarrollado por <a href="killerpanda.html"><img src="media/killerpanda/killerpanda-izquierda.png" alt="Killer Panda"></a> (A.K.A. Grupo 2) del bootcamp JSB41RT de <a href="https://hackaboss.com">Hack A Boss</a>. ©️ 2024</p>
 		</footer>
 	</body>
 </html>

@@ -31,7 +31,7 @@ const forecastContainer = document.getElementById("forecast"); // :56 Contenedor
 const forecastPlusSections = forecastContainer.getElementsByTagName("div"); // Secciones dentro de Pronostico +1
 
 // Funcion de carga
-console.log(loader);
+//console.log(loader);
 
 // Función principal para actualizar el UI
 async function main() {
@@ -48,11 +48,9 @@ async function main() {
 		if (weatherData.dia) {
 			mainContainer.classList.add("dia");
 			mainContainer.classList.remove("noche");
-			console.log("dia");
 		} else {
 			mainContainer.classList.add("noche");
 			mainContainer.classList.remove("dia");
-			console.log("noche");
 		}
 
 		// Ubicación
@@ -119,9 +117,13 @@ async function main() {
 				<section id="temperatura-plus-${i + 1}" class="temperatura">${
 				weatherData.predicciones_horarias[i + 1].temperatura
 			}</section>
-				<section id="descripcion-plus-${i + 1}" class="clima">${
+			<section id="clima-plus-${i + 1}" class="clima">
+				<img class="clima-icon" src="https:${
+					weatherData.predicciones_horarias[i + 1].icono
+				}" alt="${
 				weatherData.predicciones_horarias[i + 1].descripcion
-			}</section>
+			}">
+			</section>
 			<section id="viento-plus-${i + 1}" class="viento">${
 				weatherData.predicciones_horarias[i + 1].viento
 			}
