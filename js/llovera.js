@@ -82,16 +82,28 @@ async function main() {
 		currentWeather.classList.add(
 			weatherData.descripcion_actual.toLowerCase().replace(/ /g, "-")
 		);
-		iconoClimas(weatherData.descripcion_actual, currentWeatherIcon);
+		iconoClimas(
+			weatherData.descripcion_actual,
+			weatherData.dia,
+			currentWeatherIcon
+		);
+
+		/*
+		currentWeatherIcon.appendChild(document.createElement("img"));
+		currentWeatherIcon.lastChild.src = `https:${weatherData.icono_actual}`;
+		currentWeatherIcon.lastChild.alt = weatherData.descripcion_actual;
+		*/
 
 		// Temperatura Actual
-		currentTemperature.textContent = `${weatherData.temperatura_actual}`;
+		currentTemperature.textContent = `${Math.round(
+			weatherData.temperatura_actual
+		)}°`;
 
 		// Temperatura maxima
-		maxTemp.textContent = `${weatherData.temperatura_max}`;
+		maxTemp.textContent = `${Math.round(weatherData.temperatura_max)}`;
 
 		// Temperatura minima
-		minTemp.textContent = `${weatherData.temperatura_min}`;
+		minTemp.textContent = `${Math.round(weatherData.temperatura_min)}`;
 
 		// Humedad
 		humidity.textContent = `${weatherData.humedad_actual}`;
@@ -112,11 +124,14 @@ async function main() {
 		for (let i = 0; i < 8; i++) {
 			const htmlInterno = `
 				<section id="hora-plus-${i + 1}" class="hora">${
-				weatherData.predicciones_horarias[i + 1].hora
+				/*weatherData.predicciones_horarias[i + 1].hora*/
+				String(date.hours).padStart(2, "0") + date.hours < 12
+					? `${date.hours + i}<br>AM`
+					: `${date.hours + i - 12}<br>PM`
 			}</section>
-				<section id="temperatura-plus-${i + 1}" class="temperatura">${
+				<section id="temperatura-plus-${i + 1}" class="temperatura">${Math.round(
 				weatherData.predicciones_horarias[i + 1].temperatura
-			}</section>
+			)}</section>
 			<section id="clima-plus-${i + 1}" class="clima">
 				<img class="clima-icon" src="https:${
 					weatherData.predicciones_horarias[i + 1].icono
