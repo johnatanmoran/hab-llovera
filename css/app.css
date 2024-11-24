@@ -241,3 +241,28 @@ footer {
 	background: linear-gradient(145deg, #3b3b7a, #1c1c3d);
 	color: white;
 }
+
+/* Media Query para dispositivos móviles (ancho máximo de 768px) */
+@media (max-width: 768px) {
+}
+
+/* Media Query para smartphones pequeños */
+@media (max-width: 480px) {
+	#forecast {
+		flex-flow: column;
+	}
+
+	#forecast > div {
+		padding: 0.5rem;
+		flex-direction: row;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	#current-weather {
+		display: flex;
+		flex-direction: column;
+		flex-direction: column;
+		align-items: center;
+	}
+}
