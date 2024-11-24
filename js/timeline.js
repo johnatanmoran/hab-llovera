@@ -22,7 +22,7 @@ export function fondoClimas(clima) {
 	}
 } //./media/weather-icons/.svg
 
-export function iconoClimas(clima, elemento) {
+export function iconoClimas(clima, dia, elemento) {
 	const icono = elemento;
 	switch (clima) {
 		//Dia
@@ -47,6 +47,17 @@ export function iconoClimas(clima, elemento) {
 			//icono.appendChild(document.createElement("img"));
 			icono.prepend(document.createElement("img"));
 			icono.firstChild.src = "./media/weather-icons/noche-despejado.svg";
+			break;
+		case "Ligeras lluvias":
+			if (dia) {
+				icono.appendChild(document.createElement("img"));
+				icono.lastChild.src =
+					"./media/weather-icons/dia-lluvia-ligera.svg";
+			} else {
+				icono.appendChild(document.createElement("img"));
+				icono.lastChild.src =
+					"./media/weather-icons/noche-lluvia-ligera.svg";
+			}
 			break;
 		default:
 			break;
