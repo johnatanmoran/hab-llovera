@@ -1,7 +1,13 @@
+/* Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 /* Estilo general */
 body {
 	font-family: Arial, sans-serif;
-	background-color: #1a1a2e; /* Fondo oscuro */
 	color: white;
 	margin: 0;
 	padding: 0;
@@ -12,7 +18,6 @@ header {
 	justify-content: center;
 	padding: 10px;
 	background-color: #161625;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 nav ul {
@@ -42,7 +47,9 @@ main {
 	flex-direction: column;
 	gap: 10px;
 	width: fit-content;
-	margin: auto;
+	margin: 0 auto 2rem auto;
+	border-radius: 2rem;
+	padding: 1.5rem;
 }
 
 #current h1 {
@@ -57,11 +64,77 @@ main {
 }
 
 #current-weather {
+	margin: 1rem auto;
 	display: grid;
-	grid-template-columns: 1fr / 1fr 1fr;
-	gap: 10px;
-	margin: 20px auto;
-	max-width: 300px;
+	justify-items: center;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	width: fit-content;
+}
+
+#current-weather > div:nth-child(1) {
+	grid-area: 1 / 1 / 6 / 2;
+}
+#current-weather > div:nth-child(2) {
+	grid-area: 1 / 2 / 2 / 3;
+}
+#current-weather > div:nth-child(3) {
+	grid-area: 2 / 2 / 3 / 3;
+}
+#current-weather > div:nth-child(4) {
+	grid-area: 3 / 2 / 4 / 3;
+}
+#current-weather > div:nth-child(5) {
+	grid-area: 4 / 2 / 5 / 3;
+}
+#current-weather > div:nth-child(6) {
+	grid-area: 5 / 2 / 6 / 3;
+}
+
+#current-weather > div {
+	width: fit-content;
+}
+
+div.double-column {
+	display: grid;
+	grid-template: 1fr / 1fr 1fr;
+}
+
+#current-weather-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+#current-weather-icon img {
+	flex-shrink: 0;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.viento::after {
+	display: inline-block;
+	content: " km\A/h";
+	white-space: pre-wrap;
+	vertical-align: middle;
+	font-size: 0.5rem;
+	line-height: 0.5rem;
+	text-align: right;
+}
+
+.humedad::after {
+	content: "%";
+}
+
+#max-temperature::before {
+	content: "🔺";
+}
+
+#min-temperature::before {
+	content: "🔻";
 }
 
 .hora {
@@ -71,6 +144,7 @@ main {
 .humedad {
 	margin-bottom: 0.5rem;
 }
+
 .hora::after {
 	content: "\AHRS";
 	white-space: pre-wrap;
@@ -82,11 +156,11 @@ main {
 }
 
 .temperatura::before {
-	content: "🌡️ ";
+	content: "🌡️";
 }
 
 .temperatura::after {
-	content: " ºC";
+	content: "ºC";
 }
 
 .clima::before {
@@ -97,38 +171,27 @@ main {
 	margin: 1rem 0;
 }
 .humedad::before {
-	content: "💦 ";
-}
-.viento::before {
-	content: "🌬️ ";
+	content: "💧";
 }
 
 #forecast {
 	display: flex;
 	justify-content: center;
-	gap: 10px;
+	gap: 1rem;
+	font-size: 1.25rem;
 	flex-wrap: wrap;
 	margin: 20px auto;
 }
 
-.forecast-plus-1,
-.forecast-plus-2,
-.forecast-plus-3,
-.forecast-plus-4,
-.forecast-plus-5,
-.forecast-plus-6,
-.forecast-plus-7,
-.forecast-plus-8 {
-	background: linear-gradient(145deg, #3b3b7a, #1c1c3d);
-	color: white;
+#forecast > div {
 	border-radius: 5rem;
-	padding: 10px;
-	width: 5%;
+	padding: 2rem 0.5rem;
+	width: 10%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	font-size: 0.8rem;
+	font-size: 1rem;
 	text-align: center;
 }
 
@@ -150,4 +213,33 @@ footer {
 #credits img {
 	max-height: 2em;
 	vertical-align: middle;
+}
+
+.dia {
+	background-color: #b6e7ee;
+	color: #333;
+}
+
+.noche {
+	background-color: #1a1a2e;
+}
+
+.dia #location {
+	background-color: #ffffff55;
+	box-shadow: 0 2px 5px rgba(255, 255, 255, 0.333);
+}
+
+.noche #location {
+	background-color: #00000055;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.dia #forecast > div {
+	background: linear-gradient(145deg, #46c2e0, #2d8be4);
+	color: black;
+}
+
+.noche #forecast > div {
+	background: linear-gradient(145deg, #3b3b7a, #1c1c3d);
+	color: white;
 }

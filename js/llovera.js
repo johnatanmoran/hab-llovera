@@ -5,6 +5,8 @@ import { userLocation } from "./geolocation-beta.js";
 import { getUserDate } from "./geolocation-beta.js";
 // Importar la función de meteo.js (o como se llame el fichero de Jetro)
 import { obtenerClima } from "./meteo.js";
+// Importar funcion de timeline para cambio de iconos por Lovo
+import { iconoClimas } from "./timeline.js";
 
 // Obtener la fecha / hora del usuario
 const date = getUserDate();
@@ -17,6 +19,7 @@ const mainContainer = document.getElementById("contenedor-principal"); // :34 - 
 const loader = document.getElementById("loader"); // :35 - Cargador
 const currentLocation = document.getElementById("location"); // :37 Ciudad o Localidad
 const currentWeather = document.getElementById("current-weather"); // :42 Contenedor del clima
+const currentWeatherIcon = document.getElementById("current-weather-icon"); // :42 Contenedor del clima
 const weatherDescription = document.getElementById("description"); // :43 Descripcion del clima
 const currentTemperature = document.getElementById("current-temperature"); // :45 Temperatura
 const maxTemp = document.getElementById("max-temperature"); // :47 Temperatura maxima
@@ -81,6 +84,7 @@ async function main() {
 		currentWeather.classList.add(
 			weatherData.descripcion_actual.toLowerCase().replace(/ /g, "-")
 		);
+		iconoClimas(weatherData.descripcion_actual, currentWeatherIcon);
 
 		// Temperatura Actual
 		currentTemperature.textContent = `${weatherData.temperatura_actual}`;
