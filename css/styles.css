@@ -65,8 +65,9 @@ body {
 
 #spoiler {
 	font-size: 1rem;
-	color: #949494;
+	color: #d6d4d4;
 	text-align: center;
+	text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
 }
 
 #mainFooter {
@@ -127,4 +128,9 @@ mostrarlos al "cliente" */
 	grid-area: "hora";
 	width: 100%;
 	justify-content: center;
+}
+#horaUno {
+	font-size: 2rem;
+	text-align: center;
+
 }
