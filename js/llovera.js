@@ -154,9 +154,9 @@ async function main() {
 			forecastPlusSections[i].innerHTML = htmlInterno;
 		}
 		// Funcion de carga
+		// return new Promise((resolve) => setTimeout(resolve, 1200000)); // Test Loading 2min
 		loader.style.display = "none";
 		mainContainer.classList.toggle("blured");
-		//return new Promise((resolve) => setTimeout(resolve, 120000)); // Simula una carga de 2 segundos
 	} catch (error) {
 		console.error("Error al obtener o mostrar los datos del clima:", error);
 	}
