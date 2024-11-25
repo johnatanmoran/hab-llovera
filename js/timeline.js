@@ -1,269 +1,95 @@
 "use-stric";
 
-export function fondoClimas(clima) {
-	const body = document.body;
-	if (clima === "Clear") {
-		body.style.backgroundImage =
-			'url("./media/weather-icons/dia-despejado.svg")';
-	} else if (clima === "Clouds") {
-		body.style.backgroundImage = 'url("./media/weather-icons/.svg")';
-	} else if (clima === "Rain") {
-		body.style.backgroundImage = 'url("./media/weather-icons/.svg")';
-	} else if (clima === "Snow") {
-		body.style.backgroundImage = 'url("./media/weather-icons/.svg")';
-	} else if (clima === "Thunderstorm") {
-		body.style.backgroundImage = 'url("./media/weather-icons/.svg")';
-	} else if (clima === "Drizzle") {
-		body.style.backgroundImage = 'url("./media/weather-icons/.svg")';
-	} else if (clima === "Mist" || clima === "Haze") {
-		body.style.backgroundImage = 'url("./media/weather-icons/.svg")';
-	} else {
-		body.style.backgroundImage = 'url("./media/weather-icons/.svg")';
-	}
-} //./media/weather-icons/.svg
-
 export function iconoClimas(clima, dia, elemento) {
 	const icono = elemento;
 	switch (clima) {
-		//Dia
-		case "Soleado":
-			icono.appendChild(document.createElement("img"));
-			icono.lastChild.src = "./media/weather-icons/dia-despejado.svg";
-			break;
-		case "Parcialmente nublado":
-			icono.appendChild(document.createElement("img"));
-			icono.lastChild.src = "./media/weather-icons/dia-nublado.svg";
-			break;
-		case "Lluvia moderada":
-			icono.appendChild(document.createElement("img"));
-			icono.lastChild.src = "./media/weather-icons/dia-lluvia-ligera.svg";
-			break;
-		case "Lluvia moderada a intervalos":
-			icono.appendChild(document.createElement("img"));
-			icono.lastChild.src = "./media/weather-icons/dia-lluvia-ligera.svg";
-			break;
-		//Noche
-		case "Despejado":
-			//icono.appendChild(document.createElement("img"));
-			icono.prepend(document.createElement("img"));
-			icono.firstChild.src = "./media/weather-icons/noche-despejado.svg";
-			break;
-		case "Ligeras lluvias":
+		// case "Aguanieve fuerte o moderada" // (D/N)
+		// case "Aguanieve moderada a intervalos en las aproximaciones" // (D/N)
+		// case "Chubascos de aguanieve fuertes o moderados" // (D/N)
+		// case "Chubascos de nieve fuertes o moderados" // (D/N)
+		// case "Chubascos de nieve" // (D/N)
+		// case "Chubascos fuertes o moderados acompañados de granizo" // (D/N)
+		case ("Cielo cubierto", "Neblina", "Nublado", "Parcialmente nublado"):
 			if (dia) {
-				icono.appendChild(document.createElement("img"));
-				icono.lastChild.src =
-					"./media/weather-icons/dia-lluvia-ligera.svg";
+				icono.style.backgroundImage =
+					"url(./media/weather-icons/dia-nublado.svg)";
 			} else {
-				icono.appendChild(document.createElement("img"));
-				icono.lastChild.src =
-					"./media/weather-icons/noche-lluvia-ligera.svg";
+				icono.style.backgroundImage =
+					"url(./media/weather-icons/noche-nublado.svg)";
 			}
 			break;
+		case ("Cielos tormentosos en las aproximaciones",
+		"Lluvias con tormenta fuertes o moderadas en la región"): // (D/N)
+			icono.style.backgroundImage =
+				"url(./media/weather-icons/tormenta-electrica.svg)";
+			break;
+			// case "Lluvias heladas fuertes o moderadas" // (D/N)
+			// case "Lluvias torrenciales" // (D/N)
+			// case "Nevadas intensas" // (D/N)
+			// case "Nevadas ligeras a intervalos" // (D/N)
+			// case "Nevadas ligeras" // (D/N)
+			// case "Niebla helada" // (D/N)
+			// case "Niebla moderada" // (D/N)
+			if (dia) {
+				icono.style.backgroundImage =
+					"url(./media/weather-icons/dia-nuebes-dispersas.svg)";
+			} else {
+				icono.style.backgroundImage =
+					"url(./media/weather-icons/noche-nuebes-dispersas.svg)";
+			}
+			break;
+		case "Despejado":
+			icono.style.backgroundImage =
+				"url(./media/weather-icons/noche-despejado.svg)";
+			break;
+		// case "Fuerte llovizna helada" // (D/N)
+		case ("Fuertes lluvias", "Lluvias fuertes o moderadas"):
+			icono.style.backgroundImage =
+				"url(./media/weather-icons/dia-lluvia-ligera.svg)";
+			break;
+		// case "Fuertes nevadas" // (D/N)
+		// case "Granizo" // (D/N)
+		// case "Intervalos de lluvias ligeras con tomenta en la región" // (D/N)
+		// case "Ligeras lluvias heladas" // (D/N)
+		// case "Ligeras lluvias" // (D/N)
+		// case "Ligeras precipitaciones de aguanieve" // (D/N)
+		// case "Ligeras precipitaciones de nieve" // (D/N)
+		// case "Ligeras precipitaciones" // (D/N)
+		// case "Ligeros chubascos acompañados de granizo" // (D/N)
+		// case "Ligeros chubascos de aguanieve" // (D/N)
+		// case "Llovizna a intervalos" // (D/N)
+		// case "Llovizna helada a intervalos en las aproximaciones" // (D/N)
+		// case "Llovizna helada" // (D/N)
+		case ("Llovizna",
+		"Ligeras lluvias",
+		"Lluvias ligeras a intervalos",
+		"Lluvia moderada",
+		"Lluvia moderada a intervalos",
+		"Periodos de fuertes lluvias",
+		"Periodos de lluvia moderada"):
+			if (dia) {
+				icono.style.backgroundImage =
+					"url(./media/weather-icons/dia-lluvia-ligera.svg)";
+			} else {
+				icono.style.backgroundImage =
+					"url(./media/weather-icons/noche-lluvia-ligera.svg)";
+			}
+			break;
+		// case "Nieve moderada a intervalos en las aproximaciones" // (D/N)
+		// case "Nieve moderada a intervalos" // (D/N)
+		// case "Nieve moderada con tormenta en la región" // (D/N)
+		// case "Nieve moderada o fuertes nevadas con tormenta en la región" // (D/N)
+		// case "Nieve moderada" // (D/N)
+		case "Soleado":
+			icono.style.backgroundImage =
+				"url(./media/weather-icons/dia-despejado.svg)";
+			break;
+		// case "Ventisca" // (D/N)
+
 		default:
+			console.log("Falta Icono para el clima " + clima);
+			icono.style.backgroundImage =
+				"url(./media/weather-icons/desconocido.svg)";
 			break;
 	}
 }
-
-/*
-DIA
-"Soleado",
-"Parcialmente nublado",
-"Nublado",
-"Cielo cubierto",
-"Neblina",
-"Lluvia  moderada a intervalos",
-"Nieve moderada a intervalos en las aproximaciones",
-"Aguanieve moderada a intervalos en las aproximaciones",
-"Llovizna helada a intervalos en las aproximaciones",
-"Cielos tormentosos en las aproximaciones",
-"Chubascos de nieve",
-"Ventisca",
-"Niebla moderada",
-"Niebla helada",
-"Llovizna a intervalos",
-"Llovizna",
-"Llovizna helada",
-"Fuerte llovizna helada",
-"Lluvias ligeras a intervalos",
-"Ligeras lluvias",
-"Periodos de lluvia moderada",
-"Lluvia moderada",
-"Periodos de fuertes lluvias",
-"Fuertes lluvias",
-"Ligeras lluvias heladas",
-"Lluvias heladas fuertes o moderadas",
-"Ligeras precipitaciones de aguanieve",
-"Aguanieve fuerte o moderada",
-"Nevadas ligeras a intervalos",
-"Nevadas ligeras",
-"Nieve moderada a intervalos",
-"Nieve moderada",
-"Nevadas intensas",
-"Fuertes nevadas",
-"Granizo",
-"Ligeras precipitaciones",
-"Lluvias fuertes o moderadas",
-"Lluvias torrenciales",
-"Ligeros chubascos de aguanieve",
-"Chubascos de aguanieve fuertes o moderados",
-"Ligeras precipitaciones de nieve",
-"Chubascos de nieve fuertes o moderados",
-"Ligeros chubascos acompañados de granizo",
-"Chubascos fuertes o moderados acompañados de granizo",
-"Intervalos de lluvias ligeras con tomenta en la región",
-"Lluvias con tormenta fuertes o moderadas en la región",
-"Nieve moderada con tormenta en la región",
-"Nieve moderada o fuertes nevadas con tormenta en la región",
-
-NOCHE
-"Despejado",
-"Parcialmente nublado",
-"Nublado",
-"Cielo cubierto",
-"Neblina",
-"Lluvia  moderada a intervalos",
-"Nieve moderada a intervalos en las aproximaciones",
-"Aguanieve moderada a intervalos en las aproximaciones",
-"Llovizna helada a intervalos en las aproximaciones",
-"Cielos tormentosos en las aproximaciones",
-"Chubascos de nieve",
-"Ventisca",
-"Niebla moderada",
-"Niebla helada",
-"Llovizna a intervalos",
-"Llovizna",
-"Llovizna helada",
-"Fuerte llovizna helada",
-"Lluvias ligeras a intervalos",
-"Ligeras lluvias",
-"Periodos de lluvia moderada",
-"Lluvia moderada",
-"Periodos de fuertes lluvias",
-"Fuertes lluvias",
-"Ligeras lluvias heladas",
-"Lluvias heladas fuertes o moderadas",
-"Ligeras precipitaciones de aguanieve",
-"Aguanieve fuerte o moderada",
-"Nevadas ligeras a intervalos",
-"Nevadas ligeras",
-"Nieve moderada a intervalos",
-"Nieve moderada",
-"Nevadas intensas",
-"Fuertes nevadas",
-"Granizo",
-"Ligeras precipitaciones",
-"Lluvias fuertes o moderadas",
-"Lluvias torrenciales",
-"Ligeros chubascos de aguanieve",
-"Chubascos de aguanieve fuertes o moderados",
-"Ligeras precipitaciones de nieve",
-"Chubascos de nieve fuertes o moderados",
-"Ligeros chubascos acompañados de granizo",
-"Chubascos fuertes o moderados acompañados de granizo",
-"Intervalos de lluvias ligeras con tomenta en la región",
-"Lluvias con tormenta fuertes o moderadas en la región",
-"Nieve moderada con tormenta en la región",
-"Nieve moderada o fuertes nevadas con tormenta en la región"
-*/
-
-/*
-DIA
-"Soleado",
-"Parcialmente nublado",
-"Nublado",
-"Cielo cubierto",
-"Neblina",
-"Lluvia  moderada a intervalos",
-"Nieve moderada a intervalos en las aproximaciones",
-"Aguanieve moderada a intervalos en las aproximaciones",
-"Llovizna helada a intervalos en las aproximaciones",
-"Cielos tormentosos en las aproximaciones",
-"Chubascos de nieve",
-"Ventisca",
-"Niebla moderada",
-"Niebla helada",
-"Llovizna a intervalos",
-"Llovizna",
-"Llovizna helada",
-"Fuerte llovizna helada",
-"Lluvias ligeras a intervalos",
-"Ligeras lluvias",
-"Periodos de lluvia moderada",
-"Lluvia moderada",
-"Periodos de fuertes lluvias",
-"Fuertes lluvias",
-"Ligeras lluvias heladas",
-"Lluvias heladas fuertes o moderadas",
-"Ligeras precipitaciones de aguanieve",
-"Aguanieve fuerte o moderada",
-"Nevadas ligeras a intervalos",
-"Nevadas ligeras",
-"Nieve moderada a intervalos",
-"Nieve moderada",
-"Nevadas intensas",
-"Fuertes nevadas",
-"Granizo",
-"Ligeras precipitaciones",
-"Lluvias fuertes o moderadas",
-"Lluvias torrenciales",
-"Ligeros chubascos de aguanieve",
-"Chubascos de aguanieve fuertes o moderados",
-"Ligeras precipitaciones de nieve",
-"Chubascos de nieve fuertes o moderados",
-"Ligeros chubascos acompañados de granizo",
-"Chubascos fuertes o moderados acompañados de granizo",
-"Intervalos de lluvias ligeras con tomenta en la región",
-"Lluvias con tormenta fuertes o moderadas en la región",
-"Nieve moderada con tormenta en la región",
-"Nieve moderada o fuertes nevadas con tormenta en la región",
-
-NOCHE
-"Despejado",
-"Parcialmente nublado",
-"Nublado",
-"Cielo cubierto",
-"Neblina",
-"Lluvia  moderada a intervalos",
-"Nieve moderada a intervalos en las aproximaciones",
-"Aguanieve moderada a intervalos en las aproximaciones",
-"Llovizna helada a intervalos en las aproximaciones",
-"Cielos tormentosos en las aproximaciones",
-"Chubascos de nieve",
-"Ventisca",
-"Niebla moderada",
-"Niebla helada",
-"Llovizna a intervalos",
-"Llovizna",
-"Llovizna helada",
-"Fuerte llovizna helada",
-"Lluvias ligeras a intervalos",
-"Ligeras lluvias",
-"Periodos de lluvia moderada",
-"Lluvia moderada",
-"Periodos de fuertes lluvias",
-"Fuertes lluvias",
-"Ligeras lluvias heladas",
-"Lluvias heladas fuertes o moderadas",
-"Ligeras precipitaciones de aguanieve",
-"Aguanieve fuerte o moderada",
-"Nevadas ligeras a intervalos",
-"Nevadas ligeras",
-"Nieve moderada a intervalos",
-"Nieve moderada",
-"Nevadas intensas",
-"Fuertes nevadas",
-"Granizo",
-"Ligeras precipitaciones",
-"Lluvias fuertes o moderadas",
-"Lluvias torrenciales",
-"Ligeros chubascos de aguanieve",
-"Chubascos de aguanieve fuertes o moderados",
-"Ligeras precipitaciones de nieve",
-"Chubascos de nieve fuertes o moderados",
-"Ligeros chubascos acompañados de granizo",
-"Chubascos fuertes o moderados acompañados de granizo",
-"Intervalos de lluvias ligeras con tomenta en la región",
-"Lluvias con tormenta fuertes o moderadas en la región",
-"Nieve moderada con tormenta en la región",
-"Nieve moderada o fuertes nevadas con tormenta en la región"
-*/
