@@ -41,10 +41,10 @@ Nuestro equipo trabajó en estrecha colaboración para construir esta aplicació
 
 Este proyecto fue desarrollado como parte de un trabajo en equipo para el primer royecto Grupal **GRUPO 2 de JSB41RT** (A.K.A. Killer Panda) para el bootcamp de programación de Hack A Boss 2024. por:  
  
-- **Cristina Filgueira** @CrisFilgueira
-- **Julio Jetro** @JetroQuero
-- **Josep Galan** @JosGalSol
-- **Johnatan Moran**  @johnatanmoran
+- **Cristina Filgueira** [@CrisFilgueira](https://github.com/CrisFilgueira/)
+- **Julio Jetro** [@JetroQuero](https://github.com/JetroQuero/)
+- **Johnatan Moran**  [@johnatanmoran](https://github.com/johnatanmoran/)
+- **Josep Galan** [@JosGalSol](https://github.com/JosGalSol/)
   
 ## 🐼 Killer Panda
 
