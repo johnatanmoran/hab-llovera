@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link id="theme-link" rel="stylesheet" href="css/app.css" />
-		<link rel="stylesheet" href="https://use.typekit.net/tko3qbo.css">
+		<link rel="stylesheet" href="https://use.typekit.net/tko3qbo.css" />
 		<script type="module" src="js/llovera.js" defer></script>
 		<title>¿Lloverá?</title>
 
@@ -53,8 +53,6 @@
 			href="media/llovera-icono-animated.png"
 			type="image/x-icon"
 		/>
-
-
 	</head>
 	<body id="app">
 		<header>
@@ -75,13 +73,20 @@
 				</ul>
 			</nav>
 		</header>
-		<section id="loader"></section>
-		<main id="contenedor-principal" class="dia">
+		<section id="loader">
+			<h2>Cargando...</h2>
+			<img src="/media/llovera-icono-animated.png" alt="¿Lloverá?" />
+			<p>
+				No olvides conceder permiso al navegador para acceder a tu
+				ubicación
+			</p>
+		</section>
+		<main id="contenedor-principal" class="blured dia">
 			<section id="current">
 				<div id="current-weather">
 					<div id="location">
 						<h1 class="city">Nombre de una ciudad</h1>
-						<h2	class="region">Region de la ciudad</h2>
+						<h2 class="region">Region de la ciudad</h2>
 						<h3 class="country">Pais</h3>
 					</div>
 					<div id="current-temperature">00</div>
@@ -91,8 +96,12 @@
 				<div id="details">
 					<div id="extra-info">
 						<div class="double-column">
-							<div id="max-temperature" class="temperatura">00</div>
-							<div id="min-temperature" class="temperatura">00</div>
+							<div id="max-temperature" class="temperatura">
+								00
+							</div>
+							<div id="min-temperature" class="temperatura">
+								00
+							</div>
 						</div>
 						<div class="double-column">
 							<div id="wind" class="viento">00</div>
@@ -115,7 +124,24 @@
 		</main>
 		<footer>
 			<section id="credits">
-				<p>Desarrollado por <a href="killerpanda.html"><img src="media/killerpanda/killerpanda-izquierda.png" alt="Killer Panda"></a> (A.K.A. Grupo 2) del bootcamp JSB41RT de <a href="https://hackaboss.com">Hack A Boss</a>. Implementado con <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a> ©️ 2024</p>
+				<p>
+					Desarrollado por
+					<a href="killerpanda.html"
+						><img
+							src="media/killerpanda/killerpanda-izquierda.png"
+							alt="Killer Panda"
+					/></a>
+					(A.K.A. Grupo 2) del bootcamp JSB41RT de
+					<a href="https://hackaboss.com">Hack A Boss</a>.
+					Implementado con
+					<a
+						href="https://www.weatherapi.com/"
+						title="Free Weather API"
+						>WeatherAPI.com</a
+					>
+					©️ 2024
+				</p>
+			</section>
 		</footer>
 	</body>
 </html>

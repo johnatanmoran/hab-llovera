@@ -30,9 +30,6 @@ const currentTime = document.getElementById("current-time"); // :53 Hora actual
 const forecastContainer = document.getElementById("forecast"); // :56 Contenedor del pronóstico
 const forecastPlusSections = forecastContainer.getElementsByTagName("div"); // Secciones dentro de Pronostico +1
 
-// Funcion de carga
-//console.log(loader);
-
 // Función principal para actualizar el UI
 async function main() {
 	try {
@@ -122,15 +119,19 @@ async function main() {
 		// Inyectar las horas futuras
 
 		for (let i = 0; i < 8; i++) {
-		    console.log(date.hours)
+			console.log(date.hours);
 			const htmlInterno = `
 				<section id="hora-plus-${i + 1}" class="hora">
 				${
-				    /*weatherData.predicciones_horarias[i + 1].hora*/
-				    String(date.hours + i >= 12 ? ((date.hours + i) - 12 +1) : date.hours + i + 1).padStart(2, "0")
+					/*weatherData.predicciones_horarias[i + 1].hora*/
+					String(
+						date.hours + i >= 12
+							? date.hours + i - 12 + 1
+							: date.hours + i + 1
+					).padStart(2, "0")
 				}
-                ${date.hours + i < 11 ? '<br>AM' : '<br>PM'}
-                </section>
+				${date.hours + i < 11 ? "<br>AM" : "<br>PM"}
+				</section>
 				<section id="temperatura-plus-${i + 1}" class="temperatura">${Math.round(
 				weatherData.predicciones_horarias[i + 1].temperatura
 			)}</section>
@@ -152,6 +153,10 @@ async function main() {
 			forecastPlusSections[i].innerHTML = "";
 			forecastPlusSections[i].innerHTML = htmlInterno;
 		}
+		// Funcion de carga
+		loader.style.display = "none";
+		mainContainer.classList.toggle("blured");
+		//return new Promise((resolve) => setTimeout(resolve, 120000)); // Simula una carga de 2 segundos
 	} catch (error) {
 		console.error("Error al obtener o mostrar los datos del clima:", error);
 	}
