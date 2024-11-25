@@ -90,6 +90,7 @@ export function iconoClimas(clima, dia, elemento) {
 			console.log("Falta Icono para el clima " + clima);
 			icono.style.backgroundImage =
 				"url(./media/weather-icons/desconocido.svg)";
+			icono.textContent = "Falta Icono para el clima " + clima;
 			break;
 	}
 }
