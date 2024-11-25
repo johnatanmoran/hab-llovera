@@ -122,13 +122,15 @@ async function main() {
 		// Inyectar las horas futuras
 
 		for (let i = 0; i < 8; i++) {
+		    console.log(date.hours)
 			const htmlInterno = `
-				<section id="hora-plus-${i + 1}" class="hora">${
-				/*weatherData.predicciones_horarias[i + 1].hora*/
-				String(date.hours).padStart(2, "0") + date.hours < 12
-					? `${date.hours + i}<br>AM`
-					: `${date.hours + i - 12}<br>PM`
-			}</section>
+				<section id="hora-plus-${i + 1}" class="hora">
+				${
+				    /*weatherData.predicciones_horarias[i + 1].hora*/
+				    String(date.hours + i >= 12 ? ((date.hours + i) - 12 +1) : date.hours + i + 1).padStart(2, "0")
+				}
+                ${date.hours + i < 11 ? '<br>AM' : '<br>PM'}
+                </section>
 				<section id="temperatura-plus-${i + 1}" class="temperatura">${Math.round(
 				weatherData.predicciones_horarias[i + 1].temperatura
 			)}</section>
