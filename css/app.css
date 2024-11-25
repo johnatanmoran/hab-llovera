@@ -386,6 +386,7 @@ footer {
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: space-evenly;
+		font-size: 1rem;
 	}
 
 	#current {
@@ -394,6 +395,7 @@ footer {
 		flex-direction: column;
 		align-items: center;
 		height: auto;
+		margin: 2rem auto;
 	}
 
 	#current > div {
@@ -406,7 +408,7 @@ footer {
 	}
 
 	#current-weather-icon {
-		min-width: 250px;
-		min-height: 250px;
+		min-width: 200px;
+		min-height: 200px;
 	}
 }
