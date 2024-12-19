@@ -64,7 +64,8 @@ export function iconoClimas(clima, dia, elemento) {
 		"Ligeras lluvias",
 		"Lluvias ligeras a intervalos",
 		"Lluvia moderada",
-		"Lluvia moderada a intervalos", "Lluvia  moderada a intervalos"
+		"Lluvia moderada a intervalos",
+		"Lluvia  moderada a intervalos",
 		"Periodos de fuertes lluvias",
 		"Periodos de lluvia moderada"):
 			if (dia) {
