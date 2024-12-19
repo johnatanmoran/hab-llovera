@@ -54,10 +54,8 @@ export function iconoClimas(clima, dia, elemento) {
 		// case "Ligeras lluvias" // (D/N)
 		// case "Ligeras precipitaciones de aguanieve" // (D/N)
 		// case "Ligeras precipitaciones de nieve" // (D/N)
-		// case "Ligeras precipitaciones" // (D/N)
 		// case "Ligeros chubascos acompañados de granizo" // (D/N)
 		// case "Ligeros chubascos de aguanieve" // (D/N)
-		// case "Llovizna a intervalos" // (D/N)
 		// case "Llovizna helada a intervalos en las aproximaciones" // (D/N)
 		// case "Llovizna helada" // (D/N)
 		case ("Llovizna",
@@ -67,7 +65,9 @@ export function iconoClimas(clima, dia, elemento) {
 		"Lluvia moderada a intervalos",
 		"Lluvia  moderada a intervalos",
 		"Periodos de fuertes lluvias",
-		"Periodos de lluvia moderada"):
+		"Periodos de lluvia moderada",
+		"Ligeras precipitaciones",
+		"Llovizna a intervalos"):
 			if (dia) {
 				icono.style.backgroundImage =
 					"url(./media/weather-icons/dia-lluvia-ligera.svg)";
